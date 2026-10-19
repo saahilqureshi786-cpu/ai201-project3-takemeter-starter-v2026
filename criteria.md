@@ -1,143 +1,104 @@
-# Acceptance criteria — TakeMeter
+# Acceptance Criteria — TakeMeter
 
-Five criteria that say what "working" means for this classifier, written in
-unit 5 **before** anything was trained.
+These five criteria define what I would consider a useful TakeMeter classifier
+for the r/nba taxonomy before looking at any training results.
 
-**All five are yours this time.** None are given. You've had two projects of
-practice.
+The classifier uses four labels:
 
-An acceptance criterion names a number. *"The model is accurate"* is an
-opinion. *"Every label has an F1 of at least 0.60 on the held-out set"* is a
-criterion.
+- `analysis`
+- `hot_take`
+- `reaction`
+- `question`
 
-Under each, write a sentence or two on **why that number**. A reason that says
-something about your data or your taxonomy earns credit — *"I picked 0.60 F1
-for `reaction` because it's my smallest label and I only have about 50
-examples of it"*. A reason that could be attached to any project does not.
-
-> Missing your own targets next unit costs you nothing. Setting a target so
-> easy you can't miss it does.
+With four labels, a naive random prediction would be correct only about 25% of
+the time, so my targets are intentionally well above that baseline.
 
 ---
 
-## Pick numbers you can defend
+## 1. Overall accuracy must be at least 70%
 
-Not numbers that sound impressive. Three labels means a coin-flip guesser gets
-about 33%, so a target of 0.40 is barely a target. Your number should sit
-somewhere you'd honestly call useful.
-
-**Cover at least three of these five areas.** They're here as prompts, not as a
-form to fill in — a criterion that fits none of them is fine if it names a
-number.
-
-| Area | A question it could answer |
-|---|---|
-| Overall accuracy | How often does it need to be right to be worth using? |
-| Per-label performance | Is one label allowed to be much worse than the others? |
-| Balance | How lopsided can your label counts get before it's a problem? |
-| Consistency | If someone else labelled the same posts, how often should you agree? |
-| Confidence | Should a confident prediction be right more often than an unsure one? |
-
-Two things worth knowing before you pick numbers, because both will affect
-whether you hit them:
-
-- **Your smallest label will have the jumpiest score.** If a label has 50
-  examples, about 8 land in the test split. An F1 computed on 8 examples moves
-  a lot between seeds. A target for that label should be looser than one for
-  your biggest label, and saying so is a good reason.
-- **Unit 6 tests across three seeds, and the target has to hold across all
-  three.** A target of 0.65 against results of 0.71, 0.62, 0.68 is a **miss**.
-  Pick with that in mind — it is stricter than it first sounds.
-
----
-
-## 1.
-
-<!-- Your criterion. It must name a number. -->
-
-
+Across the held-out test set, the trained classifier should achieve an overall
+accuracy of at least **70%**.
 
 **Why this target:**
 
-
+With four labels, random guessing would be around 25%, so 70% would show that
+the model learned meaningful distinctions in r/nba discussion rather than
+mostly guessing. I do not expect near-perfect accuracy because boundaries such
+as `analysis` versus `hot_take` can genuinely be ambiguous.
 
 ---
 
-## 2.
+## 2. Macro F1 must be at least 0.65
 
-<!-- Your criterion. -->
-
-
+The classifier should achieve a **macro F1 score of at least 0.65** on the
+held-out test set.
 
 **Why this target:**
 
-
+Overall accuracy can hide weak performance on a smaller label. Macro F1 gives
+each of my four labels equal importance, which matters because I want TakeMeter
+to recognize questions and reactions as well as the more common opinion-based
+posts.
 
 ---
 
-## 3.
+## 3. Every individual label must have F1 of at least 0.55
 
-<!-- Your criterion. -->
-
-
+Each of the four labels — `analysis`, `hot_take`, `reaction`, and `question` —
+should achieve an **F1 score of at least 0.55** on the held-out test set.
 
 **Why this target:**
 
-
+The hardest distinctions in this taxonomy are likely to be `analysis` versus
+`hot_take` and `reaction` versus `hot_take`. I am therefore setting the
+per-label floor slightly below the macro-F1 target. An F1 below 0.55 would
+suggest that at least one category is not being learned reliably enough to be
+useful.
 
 ---
 
-## 4.
+## 4. No label should make up more than 40% of the dataset
 
-<!-- Your criterion. -->
-
-
+After the initial dataset is complete, **no single label should represent more
+than 40% of all labeled examples**.
 
 **Why this target:**
 
-
+There are four labels, so an exactly balanced dataset would place each near
+25%. I do not expect perfectly equal counts because r/nba naturally contains
+more opinions and reactions than some other post types, but allowing one label
+to exceed 40% would make the dataset noticeably lopsided and could encourage
+the model to favor that class.
 
 ---
 
-## 5.
+## 5. Human agreement should be at least 80%
 
-<!-- Your criterion. -->
-
-
+When another person applies the written taxonomy and decision rules to the same
+posts, I should agree with their labels on at least **80% of the examples**.
 
 **Why this target:**
 
-
+TakeMeter can only learn a distinction consistently if the label definitions
+are clear enough for different people to apply similarly. The boundaries in
+this project depend on whether a post provides real supporting evidence, is
+mainly reacting to an event, or is genuinely asking a question. An agreement
+rate of at least 80% would indicate that those rules are clear enough to be
+useful while still allowing for some genuinely ambiguous basketball posts.
 
 ---
 
-<!-- ─────────────────────────────────────────────────────────────────────────
-     UNIT 6 — read this before you change anything above.
+## Criteria Summary
 
-     If a criterion turns out to be BROKEN rather than merely unmet, you can
-     revise it, and that earns credit. But never delete or edit the original
-     line. Add the revision underneath, like this:
+| # | Measurement | Target |
+|---|---|---:|
+| 1 | Overall accuracy | ≥ 70% |
+| 2 | Macro F1 | ≥ 0.65 |
+| 3 | F1 for every individual label | ≥ 0.55 |
+| 4 | Maximum share of any one label | ≤ 40% |
+| 5 | Human labeling agreement | ≥ 80% |
 
-         ## 2. Every label performs acceptably
-
-         The model performs well on all labels.
-
-         **Why this target:** ...
-
-         > **Revised in unit 6:** Every label has an F1 of at least 0.60 on
-         > the held-out set.
-         >
-         > **Why revised:** "performs well" gave me nothing to check. I
-         > couldn't produce a verdict from it at all.
-
-     That's a revision because the criterion couldn't be MEASURED.
-
-     Lowering a target because you missed it is not a revision, and it costs
-     you the point:
-
-         ✗ "Overall accuracy of at least 0.65" → "at least 0.55", because
-            0.65 turned out to be optimistic for 200 examples.
-
-     A number you missed stays where it is, gets diagnosed, and gets a fix
-     attempted. That's where the points are.
-     ───────────────────────────────────────────────────────────────────────── -->
+These targets were selected before examining the trained model's results.
+If a target is missed later, I will report it as missed rather than lowering
+the target after seeing the results.
