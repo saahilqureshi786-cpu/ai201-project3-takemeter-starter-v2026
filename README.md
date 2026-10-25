@@ -133,3 +133,22 @@ stretch features:
 
 3. **Second measured improvement:** after the required improvement, make one
    additional diagnosis-driven change, rerun the same three    additional diagnosishe results.
+
+## Baseline vs. Trained
+
+Both models were evaluated on the same 30 posts from `test_split.csv`.
+
+| Measure | Baseline | Trained | Difference |
+|---|---:|---:|---:|
+| Overall accuracy | 0.233 | 0.433 | +0.200 |
+| Macro F1 | 0.160 | 0.151 | -0.009 |
+| F1 — `analysis` | 0.333 | 0.000 | -0.333 |
+| F1 — `hot_take` | 0.000 | 0.000 | +0.000 |
+| F1 — `question` | 0.308 | 0.000 | -0.308 |
+| F1 — `reaction` | 0.000 | 0.605 | +0.605 |
+
+The fine-tuned model improved overall accuracy by 20 percentage points and
+learned `reaction` much better than the zero-shot baseline. However, the
+baseline performed better on `analysis` and `question`. This suggests that
+fine-tuning specialized the model heavily toward the most common `reaction`
+class instead of improving every label evenly.
