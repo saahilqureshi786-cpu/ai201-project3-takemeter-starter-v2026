@@ -109,46 +109,23 @@ Setup instructions are in `RUNNING.md`.
 
 ---
 
-# Unit 6 — Testing
+---
 
-## Unit 6 Testing Plan and Stretch Features — Declared Before Testing
+python - <<'PY'
+from pathlib import Path
+import subprocess
 
-### Baseline prediction
+p = Path("README.md")
+old = p.read_text(encoding="utf-8")
+prefix = old.split("\n# Unit 6 — Testing")[0].rstrip()
 
-Before running the zero-shot baseline, I predict that the baseline may outperform
-my fine-tuned model on `analysis`, `hot_take`, and `question`, because my Unit 5
-model learned `reaction` much more strongly than the other labels. I expect the
-fine-tuned model's strongest relative performance to remain on `reaction`.
+unit6 = subprocess.check_output(["pbpaste"]).decode("utf-8").strip()
 
-### Unit 6 Stretch Features
+p.write_text(prefix + "\n\n---\n\n" + unit6 + "\n", encoding="utf-8")
+print("README updated.")
+PY
 
-Before running the Unit 6 tests, I am declaring that I will attempt all three
-stretch features:
-
-1. **Confidence check:** compare the model's most-confident predictions with
-   its least-confident predictions and report the numbers.
-
-2. **Per-label error write-up:** analyze the worst-performing label from the
-   confusion matrix, what it is confused with, and what those errors share.
-
-3. **Second measured improvement:** after the required improvement, make one
-   additional diagnosis-driven change, rerun the same three    additional diagnosishe results.
-
-## Baseline vs. Trained
-
-Both models were evaluated on the same 30 posts from `test_split.csv`.
-
-| Measure | Baseline | Trained | Difference |
-|---|---:|---:|---:|
-| Overall accuracy | 0.233 | 0.433 | +0.200 |
-| Macro F1 | 0.160 | 0.151 | -0.009 |
-| F1 — `analysis` | 0.333 | 0.000 | -0.333 |
-| F1 — `hot_take` | 0.000 | 0.000 | +0.000 |
-| F1 — `question` | 0.308 | 0.000 | -0.308 |
-| F1 — `reaction` | 0.000 | 0.605 | +0.605 |
-
-The fine-tuned model improved overall accuracy by 20 percentage points and
-learned `reaction` much better than the zero-shot baseline. However, the
-baseline performed better on `analysis` and `question`. This suggests that
-fine-tuning specialized the model heavily toward the most common `reaction`
-class instead of improving every label evenly.
+grep -n "Run Log — Before" README.md
+git add README.md
+git commit -m "Complete Unit 6 testing report and bonus analysis"
+git push origin main
