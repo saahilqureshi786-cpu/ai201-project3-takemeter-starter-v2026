@@ -1,0 +1,98 @@
+{
+  "compared": 30,
+  "agreed": 12,
+  "agreement_rate": 0.4,
+  "disagreements": [
+    {
+      "text": "I tracked sleep against session quality for eleven weeks. Under seven hours the next day's intervals were 6-8 seconds per mile slower, every time bar one. Small sample, one runner, but it's consistent enough that I've stopped scheduling hard days after late shifts.",
+      "staff": "analysis",
+      "mine": "hot_take"
+    },
+    {
+      "text": "The club championship scoring changed in 2019 from top-6 to top-10. Since then our B team has finished above the A team twice. That's not depth improving, it's the scoring rewarding turnout.",
+      "staff": "analysis",
+      "mine": "reaction"
+    },
+    {
+      "text": "Carbon plates aren't the whole story. My times dropped 2% in the shoes and another 2% the following year in the same pair, when the only thing that changed was going from 35 to 50 miles a week.",
+      "staff": "analysis",
+      "mine": "hot_take"
+    },
+    {
+      "text": "Checked the entry lists. 41% of this year's field have never run the distance before, against 26% five years ago. That's why the finish-line photos look different, not because standards dropped.",
+      "staff": "analysis",
+      "mine": "reaction"
+    },
+    {
+      "text": "Went back through the club results going back to 2012. Every single year the number of people who enter the spring marathon and don't start it sits between 18 and 23 percent. It's not a bad-luck year, it's the base rate.",
+      "staff": "analysis",
+      "mine": "hot_take"
+    },
+    {
+      "text": "The 10K route was remeasured in 2021 and came out 60 metres long. Everyone comparing PBs from before and after that is comparing two different races, which is about 12 seconds at club pace.",
+      "staff": "analysis",
+      "mine": "reaction"
+    },
+    {
+      "text": "Heart rate zones are astrology for runners.",
+      "staff": "hot_take",
+      "mine": "reaction"
+    },
+    {
+      "text": "The club needs to stop pretending the Tuesday session is for everyone. It isn't and it never has been.",
+      "staff": "hot_take",
+      "mine": "analysis"
+    },
+    {
+      "text": "Marathon training plans are all the same plan with different fonts.",
+      "staff": "hot_take",
+      "mine": "reaction"
+    },
+    {
+      "text": "If you need a gel before 90 minutes you have a fuelling problem, not an energy problem.",
+      "staff": "hot_take",
+      "mine": "analysis"
+    },
+    {
+      "text": "Track sessions are wasted on anyone running slower than 8 minute miles. You'd get more out of just running more.",
+      "staff": "hot_take",
+      "mine": "reaction"
+    },
+    {
+      "text": "Nobody actually enjoys the long run. They enjoy having done it, which is a completely different thing, and the sport would be more honest if it said so.",
+      "staff": "hot_take",
+      "mine": "analysis"
+    },
+    {
+      "text": "Got up at 5, drove ninety minutes, and it's cancelled. Standing in the car park in the rain reading the email.",
+      "staff": "reaction",
+      "mine": "analysis"
+    },
+    {
+      "text": "First run back after eight weeks out. Two miles, slower than my warm-up used to be, and I don't care even slightly.",
+      "staff": "reaction",
+      "mine": "hot_take"
+    },
+    {
+      "text": "Blew up at 20 with the pace band still in my hand like it was going to help. Rough one.",
+      "staff": "reaction",
+      "mine": "analysis"
+    },
+    {
+      "text": "Someone handed my kid an orange slice at mile 22 and I have been crying on and off since.",
+      "staff": "reaction",
+      "mine": "hot_take"
+    },
+    {
+      "text": "Wind was so bad on the out section I was leaning at about 20 degrees. Coming back felt like cheating.",
+      "staff": "reaction",
+      "mine": "analysis"
+    },
+    {
+      "text": "Third DNF this year. I don't really want to talk about it, just wanted to put it somewhere.",
+      "staff": "reaction",
+      "mine": "hot_take"
+    }
+  ],
+  "staff_posts_not_in_mine": 0
+}
