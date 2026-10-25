@@ -106,3 +106,30 @@ I declared the stretch work before implementation. The genuine fourth label, `qu
 `criteria.md`, `labels.csv`, `results.json`, `test_split.csv`, `label_definitions.txt`, `takemeter.ipynb`, `README.md`
 
 Setup instructions are in `RUNNING.md`.
+
+---
+
+# Unit 6 — Testing
+
+## Unit 6 Testing Plan and Stretch Features — Declared Before Testing
+
+### Baseline prediction
+
+Before running the zero-shot baseline, I predict that the baseline may outperform
+my fine-tuned model on `analysis`, `hot_take`, and `question`, because my Unit 5
+model learned `reaction` much more strongly than the other labels. I expect the
+fine-tuned model's strongest relative performance to remain on `reaction`.
+
+### Unit 6 Stretch Features
+
+Before running the Unit 6 tests, I am declaring that I will attempt all three
+stretch features:
+
+1. **Confidence check:** compare the model's most-confident predictions with
+   its least-confident predictions and report the numbers.
+
+2. **Per-label error write-up:** analyze the worst-performing label from the
+   confusion matrix, what it is confused with, and what those errors share.
+
+3. **Second measured improvement:** after the required improvement, make one
+   additional diagnosis-driven change, rerun the same three    additional diagnosishe results.
